@@ -1,0 +1,53 @@
+.articles_container{
+    padding: 0 70px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+
+    h2{
+    font-family: "Inter", sans-serif;
+    color: #2F4933;
+    font-weight: 400;
+        font-size: 60px;
+    span{
+        font-family: "Monsieur La Doulaise", serif;
+        font-size: 100px;
+    }
+    }
+
+    // section boxes
+    section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+      .box{
+            width: 400px;
+            height: 370px;
+            border-radius: 20px;
+            background-color: #2F4933;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+
+            
+            // numbers
+            p{
+                color: #F0EDE5;
+                font-family: "Libre Barcode EAN13 Text", system-ui;
+                font-size: 40px;
+                margin: 17px;
+            }
+        }  .b{
+            background-image: url("../assets/images/Instagram\ @bivi_sii\ 1.png");
+            background-size: cover;
+            background-position: top;
+            }
+
+            .c{
+                background-color: #DECBB7 ;
+            }
+    }
+}
+

@@ -1,0 +1,62 @@
+// Global conainer
+.header_container{
+ background-color : #A8B89A;
+ padding: 70px;
+}
+
+// Content container - especially background image
+.header{
+    background-image: url(../assets/images/background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height:90vh;
+}
+
+// Logo and login spacing
+.top_part{
+    display: grid;
+    align-items:center;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-top: 13px;
+
+    .logo{
+        grid-column: 2/3;
+        grid-row: 2/span 1;
+    }
+
+    .login_logo{
+        justify-self:end;
+        grid-column: 3/3;
+        grid-row: 2/span 1;
+        margin-right: 40px;
+    }
+}
+
+// Navigation
+.nav{
+    display: grid;;
+    grid-template-columns: repeat(5, 1fr);
+    size: 16px;
+    border: 2px solid blue;
+    width: 40%;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+
+.link{
+    color: aliceblue;
+    text-decoration: none;
+    border: 2px solid white;
+}
+
+.link_line{
+    border: 2px red solid;
+}
+}
+
+
