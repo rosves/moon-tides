@@ -16,6 +16,23 @@
   font-size: 18px;
 }
 
+// header2
+.header_nobg{
+  font-size: 18px;
+  border-bottom: 1px solid #2F4933;
+  padding-bottom: 50px;
+}
+
+.header_hitomi{
+  background-image: url(../assets/images/hitomi_bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 75vh;
+  font-size: 18px;
+}
+
 // Logo and login spacing
 .top_part {
   display: grid;

@@ -2,10 +2,12 @@ import React from "react";
 import "./Home.scss";
 import Articles from "../components/Articles";
 import HitomiPlus from "../components/HitomiPlus";
+import Header from '../components/Header';
 
 function Home() {
   return (
     <div>
+      <Header/>
    {/* global */}
     <div className="home_container">
       {/* Moon section */}

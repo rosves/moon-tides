@@ -1,0 +1,71 @@
+.rituals_container{
+    padding: 0 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "bona nova";
+  color: #2F4933;
+
+  h1 {
+    text-align: center;
+    color: #2F4933;
+    font-weight: 400;
+    font-size: 50px;
+
+    span{
+        font-family: "Monsieur la doulaise";
+        font-size: 80px;
+    }
+
+    
+  }
+  h2{
+        font-family: "bona nova";
+        font-weight: 400;
+        font-size: 40px;
+        margin-bottom: 20px;
+
+        span{
+            font-family: "Monsieur la doulaise";
+            font-size: 65px;
+            
+        
+    }
+}
+
+.box_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5% 0;
+
+    .box_row_container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .meditation_box, .yoga_box{
+            border-radius: 20px;
+            width: 100%;
+            margin: 0 2%;
+            height: 35vh;
+            color:#F0EDE5 ;
+        }
+
+        .one{
+            background-color: #2F4933;
+        }
+
+        .two{
+            background-color: #D4A373;
+        }
+
+        .three{
+            background-color: #DECBB7;
+        }
+    }
+
+
+}
+
+}

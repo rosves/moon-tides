@@ -2,11 +2,13 @@ import React from "react";
 import "./About.scss";
 import LetsConnect from "../components/Lets_Connect";
 import Hitomi from "../assets/images/Hitomi_connect.png";
+import Header from '../components/Header';
 
 function About() {
   return (
-    <div>
+    <div><Header/>
     {/* Global container */}
+    
     <div className="Hitomi_container">
       <h2>
         <span>H</span>itomi <span>M</span>ochizuki

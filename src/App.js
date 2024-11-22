@@ -9,7 +9,6 @@ import LunarCalendar from './pages/LunarCalendar';
 import Rituals from './pages/Rituals';
 import Instagram from './components/Instagram';
 import Footer from './components/Footer';
-import Header from './components/Header';
 import './App.scss'; // Fichier CSS
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
   return (
     <Router>
       <div className="body">
-        <Header />
+        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/About" element={<About />} />
