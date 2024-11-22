@@ -1,0 +1,55 @@
+.Hitomi_container{
+    color:#2F4933 ;
+    font-family: "bona nova";
+    font-weight: 300;
+    padding: 0 70px;
+
+    display: flex;
+    flex-direction: column;
+
+
+    h2{
+        font-weight: 300;
+        font-size: 75px;
+        
+    }
+
+    .about_title{
+        position: absolute;
+        right:120px;
+        top:1110px;
+        font-weight: 400;
+        font-family: 'inter';
+    }
+
+    span{
+        font-family: "Monsieur la doulaise";
+        font-weight: 400;
+        font-size: 120px;
+    }
+
+    p{
+        font-size: 20px;
+        margin-left: 70px;
+        margin-bottom: 35px;
+        
+    }
+
+    .content_container{
+
+        display: flex;
+        flex-direction:row ;
+        justify-content: space-between;
+
+        p{
+            width: 75%;
+            font-size: 26px;
+            color:#F0EDE5 ;
+            margin-top: 10px;
+            margin-left: 0;
+        }
+
+      
+    }
+
+}

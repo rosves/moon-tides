@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss" ;
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
@@ -6,6 +6,13 @@ import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
 import { ReactComponent as Line } from '../assets/Line.svg';
 
 function Header() {
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setIsDropdownOpen((prev) => !prev);
+    };
+    
     return(
         // Global container
         <div className="header_container">
@@ -19,15 +26,39 @@ function Header() {
            {/* End - Logo and login */}
            {/* Navigation */}
            <nav className="nav">
-                <Link to ='/LunarCalendar'className="link"> Lunar Calendar</Link>
-                <Line className="link_line"/>
-                <Link to ='/Practice' className="link">Practice</Link>
-                <Line className="link_line"/>
-                <Link to ='/Diary'className="link">Journal's entries</Link>
-                <Line className="link_line"/>
-                <Link to ='/About'className="link">About Hitomi</Link>
-                <Line className="link_line"/>
-                <Link to ='/Article'className="link">Articles</Link>
+           <ul className="nav_list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/About">About</Link>
+              </li>
+              <li>
+                <Link to="/Article">Article</Link>
+              </li>
+              <li>
+                <Link to="/Diary">Diary</Link>
+              </li>
+              <li>
+                <Link to="/LunarCalendar">Lunar Calendar</Link>
+              </li>
+              {/* Dropdown for Practices */}
+              <li className="dropdown">
+                <button className="dropdown_btn" onClick={toggleDropdown}>
+                  Practices
+                </button>
+                {isDropdownOpen && (
+                  <ul className="dropdown_menu">
+                    <li>
+                      <Link to="/Rituals">Rituals</Link>
+                    </li>
+                    <li>
+                      <Link to="/Affirmations">Affirmations</Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+            </ul>
             </nav>
             {/* End - Navigation */}
         </header> 

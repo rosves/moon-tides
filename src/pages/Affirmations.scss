@@ -1,0 +1,27 @@
+.affirmation_container{
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #2F4933;
+
+    h2, h3{
+        font-size: 20px;
+        font-family: "bona nova";
+        font-weight: 400;
+    }
+
+    h3{
+        font-size: 50px;
+        width: 70%;
+        line-height: 60px;
+        text-align: center;
+      
+        span{
+            font-family: "Monsieur la doulaise";
+            font-size: 120px;
+        }
+    }
+}
