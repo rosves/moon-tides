@@ -14,15 +14,15 @@ function Articles(){
             <section>
                 <div className="box a">
                     <p>01</p>
-                    <Arrow/>
+                    <Arrow className="arrow"/>
                 </div>
                 <div className="box b">
                     <p>02</p>
-                    <Arrow/>
+                    <Arrow className="arrow"/>
                 </div>
                 <div className="box c">
                     <p>03</p>
-                    <Arrow/>
+                    <Arrow className="arrow"/>
                 </div>
             </section>
         </div>

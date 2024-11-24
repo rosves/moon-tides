@@ -2,7 +2,10 @@
 .header_container {
   background-color: #a8b89a;
   padding: 70px;
-  
+
+  @media screen and (max-width: 450px) {
+    padding: 0px;
+  }
 }
 
 // Content container - especially background image
@@ -17,13 +20,13 @@
 }
 
 // header2
-.header_nobg{
+.header_nobg {
   font-size: 18px;
-  border-bottom: 1px solid #2F4933;
+  border-bottom: 1px solid #2f4933;
   padding-bottom: 50px;
 }
 
-.header_hitomi{
+.header_hitomi {
   background-image: url(../assets/images/hitomi_bg.png);
   background-size: cover;
   background-position: center;
@@ -31,6 +34,9 @@
   width: 100%;
   height: 75vh;
   font-size: 18px;
+
+  @media screen and (max-width: 450px) {
+  }
 }
 
 // Logo and login spacing
@@ -53,19 +59,66 @@
     grid-column: 3/3;
     grid-row: 2 / span 1;
     margin-right: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   }
 }
 
 // Navigation
+
+.burger_btn {
+  display: none;  /* Cacher par défaut sur grand écran */
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  margin-left: 20px;
+
+  @media (max-width: 450px) {
+    .burger_btn {
+      display: block;  /* Afficher sur les petits écrans */
+    }
+  }  
+}
+
 .nav {
   // display: grid;;
   // grid-template-columns: repeat(5, 1fr);
-  border: 1px solid blue;
   width: 40%;
   justify-self: center;
   align-items: center;
   justify-items: center;
+  font-family: "bona nova";
+  font-size: 18px;
 
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 850px) {
+    width: 70%;
+  }
+  @media (max-width: 450px){
+
+    position: absolute;
+    top: 70px; /* Ajuste selon la hauteur de ton header */
+    right: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+
+    
+  }
+
+.nav_open {
+      display: flex; /* Menu visible when */
+    }
   .nav_list {
     display: flex;
     flex-direction: row;
@@ -73,6 +126,15 @@
     align-items: center;
     justify-items: center;
     width: 80%;
+    list-style: none;
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+    @media screen and (max-width: 450px){
+      flex-direction: column;
+      gap: 15px;
+    }
 
     li {
       a {
@@ -81,29 +143,181 @@
       }
     }
 
-  }
-  
-  // dropdown
-  .dropdown {
-    size: 16px;
-    
-    
-  }
+    /* Burger menu button */
+    .burger_btn {
+      display: none; /* Caché par défaut */
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
 
-  .dropdown_btn {
-    border: none;
-    background-color: transparent;
-    color: #f0ede5;
-    cursor: pointer;
 
-    a{
-        font-size: 18px;
-        size: 18px;
+      @media (max-width: 450px) {
+        .burger_btn {
+          display: block; /* display button menu*/
+        }
+      }
+
     }
   }
 
-  .dropdown_menu {
-    position: absolute;
-    right: 34%;
+  // dropdown
+  /* Dropdown container */
+.dropdown {
+  position: relative; /* Nécessaire pour positionner la liste en absolu */
+}
+
+/* Button to toggle the dropdown */
+.dropdown_btn {
+  border: none;
+  background-color: transparent;
+  color: #f0ede5;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "bona nova";
+  padding: 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  
+
+  &:hover {
+    color: #fff;
+    background-color: #2f4933; /* Color change on hover */
+    border-radius: 5px;
   }
+}
+
+/* Dropdown menu */
+.dropdown_menu {
+  position: absolute;
+  top: 100%; /* Position juste en dessous du bouton */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 130px;
+  padding: 10px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden; /* Cache le menu par défaut */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Animation de transition */
+
+  /* Show dropdown menu when it's open */
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  li {
+    padding: 8px 15px;
+    a {
+      color: #2f4933;
+      text-decoration: none;
+      display: block; /* For better click area */
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #2f4933; /* Color change on hover */
+        background-color: #f0f0f0;
+      }
+    }
+  }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 450px) {
+  .dropdown_menu {
+    width: 100%; /* Full width on mobile */
+    top: 40px; /* Adjust if needed */
+  }
+}}
+
+/* global Overlay  */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2f4933; // Fond semi-transparent
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  font-family: "bona nova";
+}
+
+/* overlay content */
+.overlay_content {
+  background-color: #a8b89a;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    color: #2f4933;
+    margin-bottom: 10%;
+  }
+}
+
+/* close button */
+.close_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.close_btn:hover {
+  color: #555;
+}
+
+/* Form overlay */
+.overlay_content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overlay_content input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: "inter";
+}
+
+.overlay_content button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2f4933;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.overlay_content button:hover {
+  background-color: #223525;
+}
+
+/* Text toggle between Login et Sign Up */
+.toggle_form {
+  color: #223525;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle_form:hover {
+  color: #0056b3;
 }

@@ -42,24 +42,24 @@ function Rituals() {
           </h2>
           <section className="box_row_container">
           <div className="meditation_box one">
-            <p>01</p>
-            <p>Hitomi's youtube videos</p>
+            <p className="rituals_number">01</p>
+            <p className="box_title">Hitomi's youtube videos</p>
             <div className="arrow">
               <Arrow />
             </div>
           </div>
 
           <div className="meditation_box two">
-            <p>02</p>
-            <p>Hitomi's favorites</p>
+            <p className="rituals_number">02</p>
+            <p className="box_title">Hitomi's favorites</p>
             <div className="arrow">
               <Arrow />
             </div>
           </div>
 
           <div className="meditation_box three">
-            <p>03</p>
-            <p>Meditation's tips</p>
+            <p className="rituals_number">03</p>
+            <p className="box_title">Meditation's tips</p>
             <div className="arrow">
               <Arrow />
             </div>
@@ -72,16 +72,16 @@ function Rituals() {
           </h2>
 <section className="box_row_container">
           <div className="yoga_box one">
-            <p>01</p>
-            <p>Hitomi's youtube videos</p>
+            <p className="rituals_number">01</p>
+            <p className="box_title">Hitomi's youtube videos</p>
             <div className="arrow">
               <Arrow />
             </div>
           </div>
 
           <div className="yoga_box two">
-            <p>02</p>
-            <p>Hitomi's favorites</p>
+            <p className="rituals_number">02</p>
+            <p className="box_title">Hitomi's favorites</p>
             <div className="arrow">
               <Arrow />
             </div>
@@ -89,7 +89,7 @@ function Rituals() {
 
         </section>
       </section>
-      <a><p>Affirmations</p><Arrow/></a></div>
+      <a className="rituals_link"><p>Affirmations</p><Arrow/></a></div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ function HitomiPlus() {
         <p>Hitomi Mochizuki is a Japanese-American spiritual guide and content creator known for her holistic approach to wellness and personal growth. Drawing from her multicultural heritage and personal healing journey, she shares insights on spirituality, mental health, and eco-conscious living. Through her platforms, Hitomi promotes a lifestyle of mindfulness, self-care, and environmental respect, encouraging her followers to connect deeply with themselves and the world. Her influence extends to those seeking inner peace and holistic well-being, creating a supportive community around intentional and sustainable living.</p>
      <button>Read more</button>
       </section>
-      <img src={image} height="496" width="435" />
+      <img src={image} />
       {/* End - Text & image + cta */}
     </div>
     // End - Global container

@@ -6,16 +6,24 @@
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 430px) {
+    padding: 0 10px;
+  }
+
   // title
   h2 {
     font-family: "Inter", sans-serif;
     color: #2f4933;
     font-weight: 400;
     font-size: 60px;
-    // capital leter
+    // capital lettzer
     span {
       font-family: "Monsieur La Doulaise", serif;
       font-size: 100px;
+    }
+
+    @media (max-width: 430px) {
+      margin-top: 10%;
     }
   }
 
@@ -26,6 +34,11 @@
     justify-content: space-between;
 
     width: 100%;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     .box {
       width: 400px;
@@ -38,36 +51,55 @@
       justify-content: space-between;
       align-items: baseline;
 
+      @media (max-width: 1024px) {
+        width: 80%;
+        max-width: 90%;
+        height: 350px;
+        margin: 4% 0;
+      }
+
+      @media (max-width: 430px) {
+        height: 200px;
+        width: 100%;
+      }
+
       // numbers
       p {
         color: #f0ede5;
         font-family: "Libre Barcode EAN13 Text", system-ui;
         font-size: 40px;
         margin: 17px;
+        @media (max-width: 1024px) {
+          font-size: 80px;
+        }
       }
     }
     .b {
       background-image: url("../assets/images/Instagram\ @bivi_sii\ 1.png");
       background-size: cover;
       background-position: top;
+
+      @media (max-width: 1024px) {
+      }
+      background-position: 5px 30%;
     }
 
     .c {
       background-color: #decbb7;
     }
-// Practices
-    .rituals{width: 48%;
-    background-color: #D4A373;
-    display: flex;
-    flex-direction: column;
-    color: #f0ede5;
-    font-size:40px;
-    font-family: "inter";
-    cursor: pointer;
+
+    .arrow {
+      align-self: end;
+      @media (max-width: 1024px) {
+        width: 100px;
+        height: 100px;
+      }
     }
 
-    .affirmations{width: 48%;
-      background-color: #decbb7;
+    // Practices
+    .rituals {
+      width: 48%;
+      background-color: #d4a373;
       display: flex;
       flex-direction: column;
       color: #f0ede5;
@@ -76,14 +108,23 @@
       cursor: pointer;
     }
 
+    .affirmations {
+      width: 48%;
+      background-color: #decbb7;
+      display: flex;
+      flex-direction: column;
+      color: #f0ede5;
+      font-size: 40px;
+      font-family: "inter";
+      cursor: pointer;
+    }
   }
 }
-.practices_container{
+.practices_container {
   justify-content: space-between;
   margin-bottom: 10%;
-  
 
-  .bottom_part{
+  .bottom_part {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

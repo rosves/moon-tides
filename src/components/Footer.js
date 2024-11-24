@@ -48,7 +48,7 @@ function Footer() {
             </a>
             </section>
             {/* right side */}
-          <section className="right"><img src={image} alt="Hitomi upside down" height="353" width="628"/></section>
+          <section className="right"><img src={image} alt="Hitomi upside down"/></section>
         </section>
         {/* bottom part */}
         <div className="bottom">
