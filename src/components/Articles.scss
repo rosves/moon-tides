@@ -78,10 +78,11 @@
       background-image: url("../assets/images/Instagram\ @bivi_sii\ 1.png");
       background-size: cover;
       background-position: top;
+      background-repeat: no-repeat;
 
       @media (max-width: 1024px) {
       }
-      background-position: 5px 30%;
+      background-position: 0px 30%;
     }
 
     .c {
@@ -91,8 +92,8 @@
     .arrow {
       align-self: end;
       @media (max-width: 1024px) {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
       }
     }
 

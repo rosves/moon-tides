@@ -1,55 +1,122 @@
-.Hitomi_container{
-    color:#2F4933 ;
-    font-family: "bona nova";
+.Hitomi_container {
+  color: #2f4933;
+  font-family: "bona nova";
+  font-weight: 300;
+  padding: 0 70px;
+
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 430px) {
+    padding: 0 17px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    align-items: center;
+  }
+
+//   title
+  h2 {
     font-weight: 300;
-    padding: 0 70px;
+    font-size: 75px;
 
+    @media screen and (max-width: 1200px) {
+      font-size: 50px;
+      margin-top: 5%;
+    }
+
+    @media screen and (max-width: 430px) {
+      font-size: 22px;
+    }
+  }
+
+  .about_title {
+    display: none;
+    top: 123%;
+    right: 10%;
+    font-weight: 400;
+    font-family: "inter";
+  }
+
+  // img on mobile
+  .hitomi_mobile {
+    display: none;
+
+    @media screen and (max-width: 1200px) {
+      display: block;
+      width: 70%;
+      align-self: center;
+    }
+
+    @media screen and (max-width: 430px) {
+      display: none;
+    }
+  }
+  // img on desktop
+  .hitomi_connect {
+    width: 700px;
+    height: 1000px;
+
+    @media screen and (max-width: 1200px) {
+      display: none;
+    }
+  }
+
+//   capital letter
+  span {
+    font-family: "Monsieur la doulaise";
+    font-weight: 400;
+    font-size: 120px;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 90px;
+    }
+
+    @media screen and (max-width: 430px) {
+        font-size: 60px;
+      }
+  }
+
+  // small title
+  p {
+    font-size: 20px;
+    margin-left: 70px;
+    margin-bottom: 35px;
+
+    @media screen and (max-width: 1200px) {
+      margin-left: 0;
+    }
+    @media screen and (max-width: 430px) {
+        font-size: 17px;
+      }
+  }
+
+//   text
+  .content_container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 
+    p {
+      width: 75%;
+      font-size: 26px;
+      color: #f0ede5;
+      margin-top: 10px;
+      margin-left: 0;
 
-    h2{
-        font-weight: 300;
-        font-size: 75px;
-        
+      @media screen and (max-width: 1200px) {
+        text-align: justify;
+        justify-self: center;
+      }
+
+      @media screen and (max-width: 840px){
+        width: 95%;
+      }
+
+      @media screen and (max-width: 430px) {
+        width: 100%;
+        font-size: 21px;
+      }
     }
-
-    .about_title{
-        position: absolute;
-        right:120px;
-        top:1110px;
-        font-weight: 400;
-        font-family: 'inter';
-    }
-
-    span{
-        font-family: "Monsieur la doulaise";
-        font-weight: 400;
-        font-size: 120px;
-    }
-
-    p{
-        font-size: 20px;
-        margin-left: 70px;
-        margin-bottom: 35px;
-        
-    }
-
-    .content_container{
-
-        display: flex;
-        flex-direction:row ;
-        justify-content: space-between;
-
-        p{
-            width: 75%;
-            font-size: 26px;
-            color:#F0EDE5 ;
-            margin-top: 10px;
-            margin-left: 0;
-        }
-
-      
-    }
-
+  }
 }

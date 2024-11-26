@@ -10,6 +10,7 @@ function About() {
     {/* Global container */}
     
     <div className="Hitomi_container">
+      <img src={Hitomi} className="hitomi_mobile"/>
       <h2>
         <span>H</span>itomi <span>M</span>ochizuki
       </h2>
@@ -50,7 +51,7 @@ function About() {
         </article>
         <section>
           <h2 className="about_title"><span>A</span>bout</h2>
-          <img src={Hitomi} width="651" height="1002"/>
+          <img src={Hitomi} className="hitomi_connect"/>
         </section>
       </section>
       

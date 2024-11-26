@@ -20,7 +20,7 @@ Hitomi
 <br/><br/></p>
      <button>Let's connect</button>
       </section>
-      <img src={image} height="496" width="435" />
+      <img src={image}/>
       {/* End - Text & image + cta */}
     </div>
     // End - Global container

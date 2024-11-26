@@ -4,6 +4,8 @@ import img from "../assets/images/article_img.png";
 import Articles from "../components/Articles";
 import HitomiPlus from "../components/HitomiPlus";
 import Header2 from '../components/Header2';
+import { ReactComponent as Divider } from "../assets/divider.svg";
+
 
 function Article() {
   return (
@@ -35,6 +37,7 @@ function Article() {
           especially drawn to slow living as a path to a more meaningful,
           balanced life.
         </span>
+        <Divider className="divider"/>
         {/* text  / content */}
         <h2>
           <span>W</span>hat is Slow Living?
@@ -54,7 +57,7 @@ function Article() {
           practicing meditation, simplifying our schedules, or opting for
           eco-friendly, sustainable habits that protect our planet.
         </p>
-        <img className="img_divider" src={img} />
+        
         <h2>
           <span>H</span>ow to Begin Embracing Slow Living
         </h2>
