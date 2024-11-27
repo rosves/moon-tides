@@ -18,7 +18,7 @@ Together, let’s continue nurturing this space of love, self-discovery, and ali
 With all my love and light,<br/><br/>
 Hitomi
 <br/><br/></p>
-     <button>Let's connect</button>
+    <a href='https://www.instagram.com/yaknowme_hitomi/' target='blank_'> <button>Let's connect</button></a>
       </section>
       <img src={image}/>
       {/* End - Text & image + cta */}

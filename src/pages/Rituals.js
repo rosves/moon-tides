@@ -89,7 +89,7 @@ function Rituals() {
 
         </section>
       </section>
-      <a className="rituals_link"><p>Affirmations</p><Arrow/></a></div>
+      <a href="/Affirmations" className="rituals_link"><p>Affirmations</p><Arrow/></a></div>
     </div>
   );
 }

@@ -12,18 +12,18 @@ function Articles(){
             <h2><span>A</span>rticles</h2>
             {/* container - boxes */}
             <section>
-                <div className="box a">
+                <a href="/Article"><div className="box a">
                     <p>01</p>
                     <Arrow className="arrow"/>
-                </div>
-                <div className="box b">
+                </div></a>
+                <a href="/Article"><div className="box b">
                     <p>02</p>
                     <Arrow className="arrow"/>
-                </div>
-                <div className="box c">
+                </div></a>
+              <a href="/Article"> <div className="box c">
                     <p>03</p>
                     <Arrow className="arrow"/>
-                </div>
+                </div></a> 
             </section>
         </div>
     )

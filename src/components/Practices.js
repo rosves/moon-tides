@@ -15,7 +15,7 @@ function Practices() {
         <div className="box rituals">
           <p>01</p>
           <div className="bottom_part">
-            <span className="topic">rituals</span>
+            <a href="/Rituals"><span className="topic">rituals</span></a>
             <Arrow />
           </div>
         </div>
@@ -24,7 +24,7 @@ function Practices() {
           <p>02</p>
 
           <div className="bottom_part">
-            <span className="topic">affirmations</span>
+            <a href="/Affirmations"><span className="topic">affirmations</span></a>
             <Arrow />
           </div>
         </div>
