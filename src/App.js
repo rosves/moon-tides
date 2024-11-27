@@ -10,6 +10,8 @@ import Rituals from './pages/Rituals';
 import Instagram from './components/Instagram';
 import Footer from './components/Footer';
 import './App.scss'; // Fichier CSS
+import CreateNote from './pages/CreateNote';
+import EditNote from './pages/EditNote';
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/Diary" element={<Diary />} />
             <Route path="/LunarCalendar" element={<LunarCalendar />} />
             <Route path="/Rituals" element={<Rituals />} />
+            <Route path='/CreateNote' element={<CreateNote/>}/>
+            <Route path="/edit-note/:id" element={<EditNote />} />
           </Routes>
         <Instagram />
         <Footer />

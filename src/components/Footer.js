@@ -14,45 +14,54 @@ function Footer() {
         <section className="footer_links bona-nova-regular">
           {/* left side */}
           <section className="left">
-            <a>
+            <a href="/privacy" className="footer_link">
               <div>
-                <p>Privacy </p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>Privacy</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
-            <a>
+            <a href="/About" className="footer_link">
               <div>
-                <p>About Hitomi</p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>About Hitomi</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
           </section>
           {/* middle part */}
-          <section className="mid"><a>
+          <section className="mid">
+            <a href="https://www.youtube.com/@HitomiMochizuki222" target="_blank" rel="noopener noreferrer" className="footer_link">
               <div>
-                <p>Youtube</p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>YouTube</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
-            <a>
+            <a href="https://www.instagram.com/yaknowme_hitomi/" target="_blank" rel="noopener noreferrer" className="footer_link">
               <div>
-                <p>Instagram</p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>Instagram</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
-            <a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="footer_link">
               <div>
-                <p>Tiktok</p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>TikTok</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
-            <a>
+            <a href="https://x.com/yaknowme_hitomi?s=21&t=rnIUP8AIZTvVX7MIlw38Cg" target="_blank" rel="noopener noreferrer" className="footer_link">
               <div>
-                <p>X (Twitter)</p><Arrow className="arrow" width="35" height="35" alt="Arrow icon"/>
+                <p>X (Twitter)</p>
+                <Arrow className="arrow" width="35" height="35" alt="Arrow icon" />
               </div>
             </a>
-            </section>
-            {/* right side */}
-          <section className="right"><img src={image} alt="Hitomi upside down"/></section>
+          </section>
+          {/* right side */}
+          <section className="right">
+            <img src={image} alt="Hitomi upside down" />
+          </section>
         </section>
         {/* bottom part */}
         <div className="bottom">
-        <Logo width="207" height="60" alt="Moon Tides Logo" />
+          <Logo width="207" height="60" alt="Moon Tides Logo" />
           <p>© 2024, Moon Tides</p>
           <div></div>
         </div>

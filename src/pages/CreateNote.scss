@@ -1,0 +1,46 @@
+.create-note-container {
+    width: 60%;
+    margin: 0 auto;
+    font-family: "Bona Nova", sans-serif;
+  }
+  
+  .create-note-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .color-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Styles pour les différentes couleurs */
+.color1 {
+    background-color: #f7c8d0; /* Rose clair */
+    color: #333;
+  }
+  
+  .color2 {
+    background-color: #c8f7d0; /* Vert clair */
+    color: #333;
+  }
+  
+  .color3 {
+    background-color: #c8d0f7; /* Bleu clair */
+    color: #333;
+  }
+  
+  .note {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
