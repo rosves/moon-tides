@@ -1,46 +1,96 @@
-.create-note-container {
+.create_note_container {
     width: 60%;
     margin: 0 auto;
     font-family: "Bona Nova", sans-serif;
-  }
-  
-  .create-note-container form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+margin-bottom: 10%;
+ form {
     gap: 20px;
   }
-  
-  .color-options {
-    display: flex;
-    gap: 10px;
+ 
+h1{
+  color: #2F4933
+}
+
+.title{
+  width:50%;
+  background-color: #DECBB7;
+  border: none;
+  color: #2F4933;
+  font-family: "bona nova" ;
+}
+
+
+.date{
+width: 12%;
+background-color: #DECBB7;
+border: none;
+font-family: "bona nova" ;
+}
+
+.text{
+border: 20px;
+height: 300PX;
+background-color: #DECBB7;
+margin-top: 2%;
+font-family: "bona nova" ;
+font-size: 17px;
+resize: none;
+}
+
+.text:focus, .title:focus, .date:focus{
+  outline: none;
+}
+
+.note_area{
+  border: 2px solid #2F4933;
+  font-family: "bona nova" ;
+}
+
   }
   
+  
+  
+  .buttons {
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+
+    margin-top: 4%;
   button {
     padding: 10px;
+border: #2F4933 1px solid;
+    width: 10%;
+    background-color: #DECBB7 ;
+    color: #2F4933;
+    border: none;
+    width: 382px;
+    height: 65px;
     cursor: pointer;
-    border-radius: 5px;
+
+
+    font-family: "Bona Nova", serif;
+    font-size: 30px;
+  }}
+ 
+  .top_area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   
-  /* Styles pour les différentes couleurs */
-.color1 {
-    background-color: #f7c8d0; /* Rose clair */
-    color: #333;
-  }
-  
-  .color2 {
-    background-color: #c8f7d0; /* Vert clair */
-    color: #333;
-  }
-  
-  .color3 {
-    background-color: #c8d0f7; /* Bleu clair */
-    color: #333;
-  }
-  
-  .note {
+  .note_area {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 10px;
     font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #DECBB7;
   }
   

@@ -10,7 +10,6 @@ function Header2() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  // Form state
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -30,58 +29,42 @@ function Header2() {
     setErrors({});
   };
 
-  // Handle form input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Validate email
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  // Validate form
   const validateForm = () => {
     let tempErrors = {};
-  
-    // Validation du username uniquement pour Sign Up
     if (isSignUp && !formData.username.trim()) {
       tempErrors.username = "Username is required.";
     }
-  
-    // Validation de l'email
     if (!validateEmail(formData.email)) {
       tempErrors.email = "Invalid email address.";
     }
-  
-    // Validation du mot de passe
     if (formData.password.length < 8) {
       tempErrors.password = "Password must be at least 8 characters.";
     }
     if (isSignUp && !/[!@#$%^&*]/.test(formData.password)) {
       tempErrors.password = "Password must contain at least one special character.";
     }
-  
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (validateForm()) {
       console.log("Form submitted:", formData);
-      // API call for Sign Up or Login
       alert(isSignUp ? "Sign Up successful!" : "Login successful!");
       handleOverlayClose();
     }
   };
 
   return (
-    <div className="header_container">
+    <div className="header_container" id="header_container">
       <header className="header_nobg">
         <div className="top_part">
           <Link to="/" className="logo">
@@ -135,7 +118,6 @@ function Header2() {
               &times;
             </button>
             <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
-
             <form onSubmit={handleSubmit}>
               {isSignUp && (
                 <input
@@ -148,7 +130,6 @@ function Header2() {
                 />
               )}
               {errors.username && <p className="error">{errors.username}</p>}
-
               <input
                 type="email"
                 name="email"
@@ -158,7 +139,6 @@ function Header2() {
                 required
               />
               {errors.email && <p className="error">{errors.email}</p>}
-
               <input
                 type="password"
                 name="password"
@@ -168,7 +148,6 @@ function Header2() {
                 required
               />
               {errors.password && <p className="error">{errors.password}</p>}
-
               <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
             </form>
             <p>
