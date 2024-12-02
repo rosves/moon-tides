@@ -1,0 +1,24 @@
+.entry_box{
+   
+    color: #F0EDE5;
+width: 30%;
+    .note_content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-family: "bona nova";
+    }
+
+    .note_actions{
+
+        button{
+        color: #F0EDE5;
+        font-family: "bona nova";
+        background-color: transparent;    
+        border: none; 
+        font-size: 18px;
+        }
+        
+
+    }
+}

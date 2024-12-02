@@ -65,16 +65,19 @@
             }
             
             @media (max-width: 430px){
-                width: 90%;
+                width: 100%;
                 height: 80px;
                 margin: 5% 0 10% 0;
                 font-size:30px ;
+                padding: 20px 40px;
+                
             }
+
        }
 
       // img
     } img{
-        width: 30%;
+        width: 40%;
         @media (max-width: 1024px){
             width: 70%;
             align-self: center;
