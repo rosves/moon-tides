@@ -1,0 +1,88 @@
+.burger-menu {
+    position: relative;
+    display: none;
+
+    @media screen and (max-width: 430px){
+
+        display: block;
+    }
+  }
+  
+  .burger-button {
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  .burger-button span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #f0ede5;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  
+  .burger-button.open span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  
+  .burger-button.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .burger-button.open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+  
+  .menu {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background: #2f4933;
+    border-radius: 20px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 40vh;
+    width: 250px;
+    font-family: 'inter';
+    color: #f0ede5;
+    font-size: 21px;
+  }
+  
+  .menu.show {
+    display: block;
+  }
+  
+  .menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    margin: 10px 0;
+  }
+  
+  .menu ul li a {
+    text-decoration: none;
+    color: #f0ede5;
+  }
+  
+  .menu ul li a:hover {
+    color: #f0ede5;
+  }
+  
+  .dropdown_btn{
+    background-color: transparent;
+    border: none;
+    font-family: 'inter';
+    font-size: 21px;
+    padding: 0;
+    color: #f0ede5;
+  }

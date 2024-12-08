@@ -35,8 +35,7 @@
   height: 75vh;
   font-size: 18px;
 
-  @media screen and (max-width: 450px) {
-  }
+  
 }
 
 // Logo and login spacing
@@ -62,6 +61,12 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+    @media screen and (max-width: 450px) {
+      grid-row: 1/ span 1;
+      margin: auto;
+      
+  }
   }
 }
 

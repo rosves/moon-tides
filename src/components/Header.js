@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
+import BurgerMenu from "./BurgerMenu";
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,6 +17,8 @@ function Header() {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState("");
+
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
   const toggleBurgerMenu = () => setIsBurgerMenuOpen((prev) => !prev);
@@ -54,19 +57,43 @@ function Header() {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {  // Ajouter async ici
     e.preventDefault();
+    
     if (validateForm()) {
       console.log("Form submitted:", formData);
-      alert(isSignUp ? "Sign Up successful!" : "Login successful!");
+      
+      // Logic pour l'authentification
+      const response = await fetch('http://127.0.0.1:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,  // Utilisation de formData.email
+          password: formData.password  // Utilisation de formData.password
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSuccess('Login successful!');
+        console.log('User ID:', data.user_id);  // Utiliser ce User ID pour gérer l'utilisateur connecté
+      } else {
+        setErrors({ error: data.error || 'An error occurred.' });
+      }
+
       handleOverlayClose();
     }
   };
-
+ 
   return (
     <div className="header_container" id="header_container">
       <header className="header">
+        
         <div className="top_part">
+          <BurgerMenu/>
           <Link to="/" className="logo">
             <Logo width="260" height="66" alt="Moon Tides Logo" />
           </Link>
@@ -86,8 +113,8 @@ function Header() {
             <li>
               <Link to="/Article">Article</Link>
             </li>
-            <li>
-              <Link to="/Diary">Diary</Link>
+            <li >
+              <Link disabled to="/Diary">Diary</Link>
             </li>
             <li>
               <Link to="/LunarCalendar">Lunar Calendar</Link>
@@ -161,6 +188,6 @@ function Header() {
       )}
     </div>
   );
-}
+};
 
 export default Header;

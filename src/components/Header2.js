@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
+import BurgerMenu from "./BurgerMenu";
 
 function Header2() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -66,7 +67,9 @@ function Header2() {
   return (
     <div className="header_container" id="header_container">
       <header className="header_nobg">
+        
         <div className="top_part">
+          <BurgerMenu/>
           <Link to="/" className="logo">
             <Logo width="260" height="66" alt="Moon Tides Logo" />
           </Link>
