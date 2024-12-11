@@ -16,6 +16,10 @@
     color: #2f4933;
     font-weight: 400;
     font-size: 60px;
+    @media (max-width: 430px) {
+      font-size: 22px;
+    }
+
     // capital letter
     span {
       font-family: "Monsieur La Doulaise", serif;
@@ -24,7 +28,7 @@
 
     @media (max-width: 430px) {
       margin-top: 10%;
-      
+      font-size: 60px;
     }
   }
 
@@ -78,6 +82,10 @@
         @media (max-width: 1024px) {
           font-size: 80px;
         }
+
+        @media screen and (max-width: 430px){
+          font-size: 40px;
+        } 
       }
     }
     .b {
@@ -100,6 +108,11 @@
       @media (max-width: 1024px) {
         width: 90px;
         height: 90px;
+
+        @media screen and (max-width: 430px){
+          width: 50px;
+          height: 50px;
+        }
       }
     }
 
@@ -113,6 +126,12 @@
       font-size: 40px;
       font-family: "inter";
       cursor: pointer;
+
+      @media screen and (max-width: 1024px){
+
+        width: 100%;
+    
+      } 
     }
 
     .affirmations {
@@ -124,6 +143,12 @@
       font-size: 40px;
       font-family: "inter";
       cursor: pointer;
+
+      @media screen and (max-width: 1024px){
+
+        width: 100%;
+    
+      } 
     }
   }
 }
@@ -141,6 +166,13 @@
     a{
       text-decoration: none;
       color: #f0ede5;
+
+      span{
+         @media screen and (max-width: 430px){
+        font-size: 30px;
+      }
+      }
+     
     }
   }
 }

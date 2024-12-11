@@ -27,8 +27,9 @@ const BurgerMenu = () => {
       <div className={`menu ${isOpen ? 'show' : ''}`}>
         <ul>
           <li><Link to="/About">About</Link></li>
-          <li><Link to="/Diary">Diary</Link></li>
           <li><Link to="/Article">Article</Link></li>
+          <li><Link to="/Diary">Diary</Link></li>
+          
           <li><Link to="/LunarCalendar">Lunar Calendar</Link></li>
           <li className="dropdown">
               <button className="dropdown_btn" onClick={toggleDropdown}>

@@ -1,5 +1,29 @@
-.instagram_container{
-    height: 200px;
+.horizontal-gallery {
+    display: flex;
+    overflow: hidden; /* Masquer le défilement visuel */
+    white-space: nowrap;
+    scrollbar-width: none; /* Masque la barre de défilement */
+    -ms-overflow-style: none; /* Masque la barre de défilement pour IE */
+  }
+  
+  .horizontal-gallery::-webkit-scrollbar {
+    display: none; /* Masque la barre de défilement pour Chrome/Safari */
+  }
+  
+  .link_gallery {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .gallery-item {
+    flex: 0 0 auto; /* Gardez chaque image dans son propre espace */
+    width: 300px; /* Largeur fixe */
+    height: 300px; /* Hauteur fixe */
+  }
+  
+  .gallery-image {
     width: 100%;
-    background-color: aquamarine;
-}
+    height: 100%;
+    object-fit: cover; /* Ajustez l'image pour remplir le conteneur */
+  }
+  

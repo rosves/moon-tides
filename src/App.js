@@ -13,6 +13,7 @@ import './App.scss'; // Fichier CSS
 import CreateNote from './pages/CreateNote';
 import EditNote from './pages/EditNote';
 import AppTest from './App-test';
+import AdminPage from './pages/Admin';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
             <Route path="/Rituals" element={<Rituals />} />
             <Route path='/create' element={<CreateNote/>}/>
             <Route path="/edit/:id" element={<CreateNote />} />
-        
+            <Route path="/Admin" element={<AdminPage />} />
           </Routes>
         <Instagram />
         <Footer />

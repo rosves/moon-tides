@@ -1,7 +1,7 @@
 .entry_box{
    
     color: #F0EDE5;
-width: 30%;
+    width: 30%;
     .note_content{
         display: flex;
         flex-direction: row;
@@ -20,5 +20,32 @@ width: 30%;
         }
         
 
+    }
+
+    .note_title{
+
+      max-width:70% ;
+
+      @media screen and (max-width: 1024px){
+        width: 70%;
+
+      }
+      @media screen and (max-width: 450px){
+        font-size: 15px;
+      }
+
+    }
+
+    .note_date{
+
+        @media screen and (max-width: 1024px){
+            width: 40%;
+            font-size: 18px;
+    
+          }
+
+          @media screen and (max-width: 450px){
+            font-size: 15px;
+          }
     }
 }

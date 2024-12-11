@@ -4,6 +4,7 @@ import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
 import BurgerMenu from "./BurgerMenu";
+import { setCookie } from "../services/cookies";
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -79,7 +80,8 @@ function Header() {
       
       if (response.ok) {
         setSuccess('Login successful!');
-        console.log('User ID:', data.user_id);  // Utiliser ce User ID pour gérer l'utilisateur connecté
+        console.log(data);  // Utiliser ce User ID pour gérer l'utilisateur connecté
+        setCookie('token', data.token, 1);
       } else {
         setErrors({ error: data.error || 'An error occurred.' });
       }
@@ -108,7 +110,7 @@ function Header() {
         <nav className={`nav ${isBurgerMenuOpen ? "nav_open" : ""}`}>
           <ul className="nav_list">
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/Admin">About</Link>
             </li>
             <li>
               <Link to="/Article">Article</Link>

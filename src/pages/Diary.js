@@ -14,17 +14,17 @@ function Diary() {
     setNotes(savedNotes);
   }, []);
 
-  // Supprimer une note
-  const handleDeleteNote = (noteId) => {
-    const updatedNotes = notes.filter((note) => note.id !== noteId);
-    setNotes(updatedNotes);
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
-  };
+   // Supprimer une note
+   const handleDeleteNote = (noteId) => {
+     const updatedNotes = notes.filter((note) => note.id !== noteId);
+     setNotes(updatedNotes);
+     localStorage.setItem("notes", JSON.stringify(updatedNotes));
+   };
 
-  // Naviguer pour éditer une note
-  const handleEditNote = (noteId) => {
-    navigate(`/edit/${noteId}`);
-  };
+ // Naviguer pour éditer une note
+ const handleEditNote = (noteId) => {
+   navigate(`/edit/${noteId}`);
+ };
 
   return (
     <div>

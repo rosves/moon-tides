@@ -5,8 +5,8 @@ function NoteCard({ note, onDelete, onEdit }) {
   return (
     <div className="entry_box" style={{ backgroundColor: note.color || "#D4A373" }}>
       <div className="note_content" onClick={() => onEdit(note.id)}>
-        <p>{note.title || "Untitled"}</p>
-        <p>{note.date || "No date"}</p>
+        <p className="note_title">{note.title || "Untitled"}</p>
+        <p className="note_date">{note.date || "No date"}</p>
       </div>
       <div className="note_actions">
         <button className="edit-btn" onClick={() => onEdit(note.id)}>Edit</button>

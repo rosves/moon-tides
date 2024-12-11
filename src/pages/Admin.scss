@@ -1,0 +1,177 @@
+.admin-page {
+    display: flex;
+    height: 100vh;
+    background-color: #2f4933;
+  
+    .sidebar {
+      width: 20%;
+      background-color: #1e2b20;
+      color: #f0ede5;
+      padding: 20px;
+      text-align: center;
+  
+      h1 {
+        font-family: "Monsieur la Doulaise", cursive;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+  
+      nav ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          font-family: "Bona Nova", serif;
+          font-size: 20px;
+          margin: 20px 0;
+          cursor: pointer;
+        }
+      }
+    }
+  
+    .main-content {
+      width: 80%;
+      padding: 20px;
+      background-color: #f0ede5;
+  
+      h2 {
+        font-family: "Bona Nova", serif;
+        color: #2f4933;
+        font-size: 28px;
+      }
+  
+      .users-section,
+      .rituals-section {
+        margin-bottom: 40px;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        th, td {
+          border: 1px solid #ccc;
+          padding: 10px;
+          text-align: left;
+        }
+  
+        th {
+          background-color: #f5f5f5;
+        }
+  
+        td {
+          font-family: "Bona Nova", serif;
+        }
+  
+        button {
+          background-color: #d9bea6;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          color: #fff;
+        }
+      }
+  
+      .rituals-container {
+        display: flex;
+        justify-content: space-between;
+  
+        .ritual-column {
+          width: 45%;
+  
+          label {
+            font-family: "Bona Nova", serif;
+            margin-bottom: 5px;
+            display: block;
+          }
+  
+          input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+        }
+      }
+  
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+  
+        button {
+          background-color: #d9bea6;
+          border: none;
+          padding: 10px 20px;
+          margin-left: 10px;
+          cursor: pointer;
+          color: #fff;
+        }
+      }
+    }
+  
+    /* Popup Style */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: "Bona Nova", serif;
+  
+        p {
+          margin-bottom: 20px;
+        }
+  
+        button {
+          background-color: #d9bea6;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          color: #fff;
+          border-radius: 5px;
+        }
+      }
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 30%;
+      }
+  
+      .main-content {
+        width: 70%;
+        padding: 10px;
+  
+        .rituals-container {
+          flex-direction: column;
+  
+          .ritual-column {
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .sidebar {
+        width: 100%;
+      }
+  
+      .main-content {
+        width: 100%;
+      }
+    }
+  }
+  

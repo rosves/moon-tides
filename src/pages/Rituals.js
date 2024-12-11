@@ -15,21 +15,15 @@ function Rituals() {
           <span>R</span>ituals
         </h1>
         {/* text / content */}
-        <p>
-          Mes reco persos de medidations Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Nunc accumsan ante in leo dapibus dapibus. Cras
-          dictum egestas libero, eu tempus lectus finibus non. Cras dignissim
-          ante vitae orci mollis malesuada. Class aptent taciti sociosqu ad
-          litora torquent per conubia nostra, per inceptos himenaeos. Vivamus
-          quis erat metus. Mes reco persos de medidations Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Nunc accumsan ante in leo dapibus
-          dapibus. Cras dictum egestas libero, eu tempus lectus finibus non.
-          Cras dignissim ante vitae orci mollis malesuada. Class aptent taciti
-          sociosqu ad litora torquent per conubia nostra, per inceptos
-          himenaeos. Vivamus quis erat metus. Cras dictum egestas libero, eu
-          tempus lectus finibus non. Cras dignissim ante vitae orci mollis
-          malesuada. Class aptent taciti sociosqu ad litora torquent per conubia
-          nostra, per inceptos himenaeos. Vivamus quis erat metus.
+        <p className="message">
+        Hello, beautiful souls 🌿, <br/><br/>
+
+I’m so excited to share with you my curated recommendations for yoga and meditation videos! These practices have been such a transformative part of my own healing journey, helping me find balance, release tension, and reconnect with my true self. My hope is that these resources will guide you toward a deeper sense of peace, presence, and alignment in your own life.
+
+Take your time, move with intention, and let these moments be a gift to yourself. Your body, mind, and spirit deserve this love.
+
+<br/>With all my heart, <br/>
+Hitomi
         </p>
       
       {/* boxes' container */}
@@ -67,7 +61,7 @@ function Rituals() {
         </section>
         {/* yoga */}
         <section className="yoga_container" >
-        <h2>
+        <h2 className="yoga_title">
             <span>Y</span>oga
           </h2>
 <section className="box_row_container">

@@ -16,7 +16,7 @@ function Practices() {
           <p>01</p>
           <div className="bottom_part">
             <a href="/Rituals"><span className="topic">rituals</span></a>
-            <Arrow />
+            <Arrow className="arrow" />
           </div>
         </div>
 
@@ -25,7 +25,7 @@ function Practices() {
 
           <div className="bottom_part">
             <a href="/Affirmations"><span className="topic">affirmations</span></a>
-            <Arrow />
+            <Arrow className="arrow" />
           </div>
         </div>
       </section>
