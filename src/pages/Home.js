@@ -3,6 +3,7 @@ import "./Home.scss";
 import Articles from "../components/Articles";
 import HitomiPlus from "../components/HitomiPlus";
 import Header from '../components/Header';
+import LunarCarousel from "../components/LunarCarousel";
 
 function Home() {
   return (
@@ -11,11 +12,12 @@ function Home() {
    {/* global */}
     <div className="home_container">
       {/* Moon section */}
-      <section className="moon_snippet">Lunars</section>
+      <section className="moon_snippet"><LunarCarousel/></section>
       {/* End - Moon section */}
       {/* text part */}
+      <span>11/12/2024</span>
       <h2>Full Moon</h2>
-      <span>in virgo</span>
+      
       <p className="moon_text">
         la pleine lune en Vierge, c’est un moment particulier où les énergies de
         ce signe de terre viennent éclairer nos vies de manière précise et
@@ -30,7 +32,7 @@ function Home() {
         "grande révision" cosmique de nos habitudes, notre travail, et même
         notre bien-être physique.
       </p>
-      <button>Read more</button>
+      <a href="/LunarCalendar"><button >Read more</button></a>
       
     </div>
     <Articles/>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
+import {ReactComponent as LogoutLogo} from '../assets/logout.svg';
 import BurgerMenu from "./BurgerMenu";
 import { setCookie } from "../services/cookies";
 
@@ -19,7 +20,6 @@ function Header() {
   });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
-
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
   const toggleBurgerMenu = () => setIsBurgerMenuOpen((prev) => !prev);
@@ -58,44 +58,51 @@ function Header() {
     return Object.keys(tempErrors).length === 0;
   };
 
-   const handleSubmit = async (e) => {  // Ajouter async ici
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      
-      // Logic pour l'authentification
-      const response = await fetch('http://127.0.0.1:8000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,  // Utilisation de formData.email
-          password: formData.password  // Utilisation de formData.password
-        }),
-      });
-
-      const data = await response.json();
-      
-      if (response.ok) {
-        setSuccess('Login successful!');
-        console.log(data);  // Utiliser ce User ID pour gérer l'utilisateur connecté
-        setCookie('token', data.token, 1);
-      } else {
-        setErrors({ error: data.error || 'An error occurred.' });
+      try {
+        const apiUrl = isSignUp 
+          ? 'http://127.0.0.1:8000/api/register' 
+          : 'http://127.0.0.1:8000/api/login';
+  
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+            ...(isSignUp && { username: formData.username }),
+          }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setSuccess(isSignUp ? 'Signup successful!' : 'Login successful!');
+          setCookie('token', data.token, 1);
+        } else {
+          // Gestion spécifique des erreurs
+          if (data.error === 'Email déjà enregistré') {
+            setErrors({ email: 'This email is already in use.' });
+          } else {
+            setErrors({ error: data.error || 'An error occurred.' });
+          }
+        }
+      } catch (error) {
+        setErrors({ error: 'Network error. Please try again later.' });
       }
-
-      handleOverlayClose();
     }
   };
- 
+
   return (
     <div className="header_container" id="header_container">
       <header className="header">
-        
         <div className="top_part">
-          <BurgerMenu/>
+          <BurgerMenu />
           <Link to="/" className="logo">
             <Logo width="260" height="66" alt="Moon Tides Logo" />
           </Link>
@@ -115,7 +122,7 @@ function Header() {
             <li>
               <Link to="/Article">Article</Link>
             </li>
-            <li >
+            <li>
               <Link disabled to="/Diary">Diary</Link>
             </li>
             <li>
@@ -148,37 +155,41 @@ function Header() {
             </button>
             <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
             <form onSubmit={handleSubmit}>
-              {isSignUp && (
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  required
-                />
-              )}
-              {errors.username && <p className="error">{errors.username}</p>}
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              {errors.email && <p className="error">{errors.email}</p>}
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              {errors.password && <p className="error">{errors.password}</p>}
-              <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
-            </form>
+  {isSignUp && (
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      value={formData.username}
+      onChange={handleInputChange}
+      required
+    />
+  )}
+  {errors.username && <p className="error">{errors.username}</p>}
+  
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    value={formData.email}
+    onChange={handleInputChange}
+    required
+  />
+  {errors.email && <p className="error">{errors.email}</p>} {/* Message pour email déjà utilisé */}
+  
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    value={formData.password}
+    onChange={handleInputChange}
+    required
+  />
+  {errors.password && <p className="error">{errors.password}</p>}
+  
+  <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
+</form>
+
             <p>
               {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
               <span className="toggle_form" onClick={toggleForm}>
@@ -190,6 +201,6 @@ function Header() {
       )}
     </div>
   );
-};
+}
 
 export default Header;
