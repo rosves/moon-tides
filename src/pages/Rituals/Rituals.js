@@ -1,7 +1,9 @@
 import React from "react";
-import Header2 from "../components/Header2";
-import { ReactComponent as Arrow } from "../assets/arrow.svg";
+import Header2 from "../../components/Header2";
+import { ReactComponent as Arrow } from "../../assets/arrow.svg";
 import "./Rituals.scss";
+import Footer from "../../components/Footer";
+import Instagram from "../../components/Instagram";
 
 function Rituals() {
   return (
@@ -84,6 +86,8 @@ Hitomi
         </section>
       </section>
       <a href="/Affirmations" className="rituals_link"><p>Affirmations</p><Arrow className="affirmation_arrow"/></a></div>
+      <Instagram />
+      <Footer />
     </div>
   );
 }

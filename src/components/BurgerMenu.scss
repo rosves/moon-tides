@@ -17,6 +17,7 @@
     cursor: pointer;
     border: none;
     background: none;
+    border: 1px #f0ede5 solid;
   }
   
   .burger-button span {
@@ -25,6 +26,7 @@
     height: 4px;
     background-color: #f0ede5;
     transition: transform 0.3s, opacity 0.3s;
+    
   }
   
   .burger-button.open span:nth-child(1) {

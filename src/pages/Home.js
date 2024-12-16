@@ -1,42 +1,189 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./Home.scss";
 import Articles from "../components/Articles";
 import HitomiPlus from "../components/HitomiPlus";
 import Header from '../components/Header';
 import LunarCarousel from "../components/LunarCarousel";
+import Footer from "../components/Footer";
+import Instagram from "../components/Instagram";
+
 
 function Home() {
+
+ const [moonPhase, setmoonPhase] = useState([]);
+  const [moonPeriod, setmoonPeriod] = useState([]);
+
+  // Fonction pour appeler l'API locale et récupérer les phases lunaires
+  async function LunarPhaseResquest() {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/calendar", {
+        method: "GET",
+      });
+      if (response.ok) {
+        return await response.json(); // Retourne les données si la requête réussit
+      }
+    } catch (error) {
+      console.log("Error in the route to Lunar Phase"); // Message d'erreur en cas d'échec
+    }
+  }
+
+  // Fonction pour appeler une API externe et récupérer des informations sur les phases de la Lune
+  async function MoonPhaseApiResquest() {
+    const headers = new Headers({
+      Authorization: "Basic " + btoa("me_victoire_lytween:ts2GG1Ie78"),
+    });
+
+    try {
+      const response = await fetch(
+        `https://api.meteomatics.com/2024-12-17T00:00:00ZP30D:P1D/moon_phase:idx/50,10/json`,
+        { method: "GET", headers: headers }
+      );
+      if (response.ok) {
+        return await response.json(); // Retourne les données si la requête échoue avec un statut valide
+      }
+    } catch (error) {
+      console.log("Error in the route to Moon Phase API"); // Message d'erreur en cas d'échec
+    }
+  }
+
+  // Utilisation de useEffect pour exécuter une action après le montage du composant
+  useEffect(() => {
+    async function fetchCalendar() {
+      try {
+        // Appelle les deux fonctions d'API et affiche les résultats dans la console
+        const LunarData = await LunarPhaseResquest();
+        const MoonPhaseApiData = await MoonPhaseApiResquest();
+        console.log(LunarData, MoonPhaseApiData); // Debugging : Affiche les données
+        setmoonPeriod(MoonPhaseApiData.data[0].coordinates[0].dates);
+        setmoonPhase(LunarData.lunar);
+      } catch (error) {
+        console.log("Error fetching calendar data"); // Message d'erreur générique
+      }
+    }
+    fetchCalendar(); // Exécute la fonction au montage
+  }, []);
+
+  const MoonDataCarousel = [];
+
+   moonPeriod.forEach((dates) => {
+   let object = {};
+
+       if (dates.value > -1 & dates.value < - 0.5) {
+      // Wanning gibbous
+       const WaningGibbous =  moonPhase.find((index) => index.phase_name == 'Waning Gibbous') ;
+       let dateToUse = new Date(dates.date)
+ 
+       object = {
+          date : dateToUse.toLocaleDateString('en-US'),
+          type : WaningGibbous.phase_name.replace(' ', ''),
+          description : WaningGibbous.description
+        }
+        MoonDataCarousel.push(object);
+
+      }else if (dates.vales = - 0.5){
+        // Last Quarter
+        const LastQuarter =  moonPhase.find((index) => index.phase_name == 'Last Quarter') ;
+       let dateToUse = new Date(dates.date)
+ 
+       object = {
+          date : dateToUse.toLocaleDateString('en-US'),
+          type : LastQuarter.phase_name.replace(' ', ''),
+          description : LastQuarter.description
+        }
+        MoonDataCarousel.push(object);
+
+
+      } else if (dates.value > -0.5 & dates.value < 0){
+          // Waning crescent
+         const WaningCrescent =  moonPhase.find((index) => index.phase_name == 'Waning Crescent') ;
+      let dateToUse = new Date(dates.date)
+ 
+      object = {
+         date : dateToUse.toLocaleDateString('en-US'),
+         type : WaningCrescent.phase_name.replace(' ', ''),
+         description : WaningCrescent.description
+       }
+       MoonDataCarousel.push(object);
+
+     } else if( dates.value = 0){
+         // New moon
+         const NewMoon =  moonPhase.find((index) => index.phase_name == 'New Moon') ;
+      let dateToUse = new Date(dates.date)
+ 
+      object = {
+         date : dateToUse.toLocaleDateString('en-US'),
+         type : NewMoon.phase_name.replace(' ', ''),
+         description : NewMoon.description
+       }
+       MoonDataCarousel.push(object);
+
+     } else if (dates.value > 0 & dates.value < 0.5){
+       // Waxing crescent
+       const WaxingCrescent =  moonPhase.find((index) => index.phase_name == 'Waxing Crescent') ;
+      let dateToUse = new Date(dates.date)
+ 
+      object = {
+         date : dateToUse.toLocaleDateString('en-US'),
+         type : WaxingCrescent.phase_name.replace(' ', ''),
+         description : WaxingCrescent.description
+       }
+       MoonDataCarousel.push(object);
+
+     } else if (dates.value = 0.5){
+       // First quarter
+       const FirstQuarter =  moonPhase.find((index) => index.phase_name == 'First Quarter') ;
+       let dateToUse = new Date(dates.date)
+  
+       object = {
+          date : dateToUse.toLocaleDateString('en-US'),
+          type : FirstQuarter.phase_name.replace(' ', ''),
+          description : FirstQuarter.description
+        }
+        MoonDataCarousel.push(object);
+
+     } else if (dates.value > 0.5 & dates.value < 1){
+     // Waxing gibbous
+     const WaxingGibbous =  moonPhase.find((index) => index.phase_name == 'Waxing Gibbous') ;
+     let dateToUse = new Date(dates.date)
+
+     object = {
+        date : dateToUse.toLocaleDateString('en-US'),
+        type : WaxingGibbous.phase_name.replace(' ', ''),
+        description : WaxingGibbous.description
+      }
+      MoonDataCarousel.push(object);
+     } else if (dates.value = 1) {
+       //Full Moon
+       const FullMoon =  moonPhase.find((index) => index.phase_name == 'Full Moon') ;
+       let dateToUse = new Date(dates.date)
+  
+       object = {
+          date : dateToUse.toLocaleDateString('en-US'),
+          type : FullMoon.phase_name.replace(' ', ''),
+          description : FullMoon.description
+        }
+        MoonDataCarousel.push(object);
+     }
+      
+   });
+
+
+
   return (
     <div>
       <Header/>
    {/* global */}
     <div className="home_container">
       {/* Moon section */}
-      <section className="moon_snippet"><LunarCarousel/></section>
+      <section className="moon_snippet"><LunarCarousel infos={MoonDataCarousel}/></section>
       {/* End - Moon section */}
-      {/* text part */}
-      <span>11/12/2024</span>
-      <h2>Full Moon</h2>
-      
-      <p className="moon_text">
-        la pleine lune en Vierge, c’est un moment particulier où les énergies de
-        ce signe de terre viennent éclairer nos vies de manière précise et
-        pragmatique. La Vierge est gouvernée par Mercure, la planète de
-        l’intellect et de la communication, ce qui en fait une pleine lune axée
-        sur la réflexion, l’analyse et l’amélioration. <br /><br />
-        Lorsque la lune brille dans le signe de la Vierge, elle nous pousse à
-        revisiter nos routines, à organiser nos pensées et notre espace, et à
-        mettre de l’ordre dans le chaos de la vie quotidienne. C’est une période
-        idéale pour faire le point sur ce qui fonctionne et ce qui ne fonctionne
-        plus, tant sur le plan matériel que mental. C’est un peu comme une
-        "grande révision" cosmique de nos habitudes, notre travail, et même
-        notre bien-être physique.
-      </p>
-      <a href="/LunarCalendar"><button >Read more</button></a>
+      <a className="read_more" href="/LunarCalendar"><button >Read more</button></a>
       
     </div>
     <Articles/>
       <HitomiPlus/>
+      <Instagram />
+      <Footer />
     </div>
     // end
   );

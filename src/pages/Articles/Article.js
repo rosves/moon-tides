@@ -1,11 +1,12 @@
 import React from "react";
 import "./Article.scss";
-import img from "../assets/images/article_img.png";
-import Articles from "../components/Articles";
-import HitomiPlus from "../components/HitomiPlus";
-import Header2 from '../components/Header2';
-import { ReactComponent as Divider } from "../assets/divider.svg";
-
+import img from "../../assets/images/article_img.png";
+import Articles from "../../components/Articles";
+import HitomiPlus from "../../components/HitomiPlus";
+import Header2 from '../../components/Header2';
+import { ReactComponent as Divider } from "../../assets/divider.svg";
+import Footer from "../../components/Footer";
+import Instagram from "../../components/Instagram";
 
 function Article() {
   return (
@@ -128,6 +129,8 @@ function Article() {
 
       <Articles />
       <HitomiPlus />
+      <Instagram />
+      <Footer />
     </div>
   );
 }

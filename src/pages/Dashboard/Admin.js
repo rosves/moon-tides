@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
+import { ReactComponent as Logo } from '../../assets/Moon Tides.svg';
 import "./Admin.scss";
 
 const AdminPage = () => {
   const [users, setUsers] = useState([
-    { id: 1, email: "example@example.fr", username: "annies75003", password: "EZBVUZBVZBVZBZVBZBVZ" },
-    { id: 2, email: "example@example.fr", username: "annies75003", password: "EZBVUZBVZBVZBZVBZBVZ" },
+    { id: 1, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 2, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 3, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 4, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 5, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 6, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 7, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 8, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 9, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 10, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 11, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
+    { id: 12, email: "example@example.fr", username: "annies75003", role: "ROLE_USER" },
   ]);
 
   const [isRitualSaved, setIsRitualSaved] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
+
+
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
@@ -37,8 +50,8 @@ const AdminPage = () => {
           </Link>
         <nav>
           <ul>
-            <li>Dashboard</li>
-            <li>Articles</li>
+           <a href="/Admin" className="active"><li>Dashboard</li></a>
+            <a href="/HandleArticle"><li>Articles</li></a>
           </ul>
         </nav>
       </aside>
@@ -53,7 +66,7 @@ const AdminPage = () => {
               <tr>
                 <th>Email</th>
                 <th>Username</th>
-                <th>Password</th>
+                <th>Role</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -62,7 +75,7 @@ const AdminPage = () => {
                 <tr key={user.id}>
                   <td>{user.email}</td>
                   <td>{user.username}</td>
-                  <td>{user.password}</td>
+                  <td>{user.role}</td>
                   <td>
                     <button onClick={() => handleDelete(user.id)}>Supprimer</button>
                   </td>
@@ -79,16 +92,16 @@ const AdminPage = () => {
             <div className="ritual-column">
               <h3>Meditation</h3>
               <label>Hitomi's videos</label>
-              <input type="text" placeholder="Enter video details" />
+              <input type="text" placeholder="Enter link details" />
               <label>Hitomi's favorites</label>
-              <input type="text" placeholder="Enter favorite details" />
+              <input type="text" placeholder="Enter link details" />
             </div>
             <div className="ritual-column">
-              <h3>Meditation</h3>
+              <h3>Yoga</h3>
               <label>Hitomi's videos</label>
-              <input type="text" placeholder="Enter video details" />
+              <input type="text" placeholder="Enter link details" />
               <label>Hitomi's favorites</label>
-              <input type="text" placeholder="Enter favorite details" />
+              <input type="text" placeholder="Enter link details" />
             </div>
           </div>
           <div className="buttons">

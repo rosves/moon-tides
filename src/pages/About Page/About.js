@@ -1,8 +1,11 @@
 import React from "react";
 import "./About.scss";
-import LetsConnect from "../components/Lets_Connect";
-import Hitomi from "../assets/images/Hitomi_connect.png";
-import Header from '../components/Header';
+import LetsConnect from "../../components/Lets_Connect";
+import Hitomi from "../../assets/images/Hitomi_connect.png";
+import Header from '../../components/Header';
+import Footer from "../../components/Footer";
+import Instagram from "../../components/Instagram";
+
 
 function About() {
   return (
@@ -55,7 +58,10 @@ function About() {
         </section>
       </section>
       
-    </div> <LetsConnect/>
+    </div> 
+    <LetsConnect/>
+    <Instagram />
+    <Footer />
     </div>
   );
 }

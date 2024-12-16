@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
-import {ReactComponent as LogoutLogo} from '../assets/logout.svg';
+import { ReactComponent as LogoutLogo } from '../assets/logout.svg';
 import BurgerMenu from "./BurgerMenu";
-import { setCookie } from "../services/cookies";
+import { GetCookie, setCookie, RemoveCookie } from "../services/cookies";  // Assurez-vous que GetCookie est bien importé
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -20,6 +20,9 @@ function Header() {
   });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
+
+  // Vérifie si l'utilisateur est connecté en recherchant le token
+  const token = GetCookie("token");
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
   const toggleBurgerMenu = () => setIsBurgerMenuOpen((prev) => !prev);
@@ -75,7 +78,7 @@ function Header() {
           body: JSON.stringify({
             email: formData.email,
             password: formData.password,
-            ...(isSignUp && { username: formData.username }),
+            ...(isSignUp && { username: formData.username } ),
           }),
         });
   
@@ -83,9 +86,9 @@ function Header() {
   
         if (response.ok) {
           setSuccess(isSignUp ? 'Signup successful!' : 'Login successful!');
-          setCookie('token', data.token, 1);
+          setCookie('token', data.token, 1);  // Sauvegarde le token dans les cookies
         } else {
-          // Gestion spécifique des erreurs
+          // Gestion des erreurs spécifiques
           if (data.error === 'Email déjà enregistré') {
             setErrors({ email: 'This email is already in use.' });
           } else {
@@ -98,6 +101,12 @@ function Header() {
     }
   };
 
+  // Fonction pour la déconnexion
+  const handleLogout = () => {
+    RemoveCookie("token");  // Supprimer le token à la déconnexion
+    window.location.reload();  // Recharger la page pour mettre à jour l'interface
+  };
+
   return (
     <div className="header_container" id="header_container">
       <header className="header">
@@ -106,9 +115,16 @@ function Header() {
           <Link to="/" className="logo">
             <Logo width="260" height="66" alt="Moon Tides Logo" />
           </Link>
-          <button className="login_logo" onClick={handleOverlayOpen}>
-            <LoginLogo width="30" height="30" alt="Login" />
-          </button>
+          {/* Affichage conditionnel de LoginLogo ou LogoutLogo */}
+          {token ? (
+            <button className="login_logo" onClick={handleLogout}>
+              <LogoutLogo width="30" height="30" alt="Logout" />
+            </button>
+          ) : (
+            <button className="login_logo" onClick={handleOverlayOpen}>
+              <LoginLogo width="30" height="30" alt="Login" />
+            </button>
+          )}
           <button className="burger_btn" onClick={toggleBurgerMenu}>
             ☰
           </button>
@@ -117,17 +133,25 @@ function Header() {
         <nav className={`nav ${isBurgerMenuOpen ? "nav_open" : ""}`}>
           <ul className="nav_list">
             <li>
-              <Link to="/Admin">About</Link>
+              <Link to="/About">About</Link>
             </li>
-            <li>
-              <Link to="/Article">Article</Link>
-            </li>
-            <li>
-              <Link disabled to="/Diary">Diary</Link>
-            </li>
+
+            {/* Les liens "Article" et "Diary" n'apparaissent que si l'utilisateur est connecté */}
+            {token && (
+              <>
+                <li>
+                  <Link to="/Article">Article</Link>
+                </li>
+                <li>
+                  <Link to="/Diary">Diary</Link>
+                </li>
+              </>
+            )}
+
             <li>
               <Link to="/LunarCalendar">Lunar Calendar</Link>
             </li>
+
             <li className="dropdown">
               <button className="dropdown_btn" onClick={toggleDropdown}>
                 Practices
@@ -155,40 +179,40 @@ function Header() {
             </button>
             <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
             <form onSubmit={handleSubmit}>
-  {isSignUp && (
-    <input
-      type="text"
-      name="username"
-      placeholder="Username"
-      value={formData.username}
-      onChange={handleInputChange}
-      required
-    />
-  )}
-  {errors.username && <p className="error">{errors.username}</p>}
-  
-  <input
-    type="email"
-    name="email"
-    placeholder="Email"
-    value={formData.email}
-    onChange={handleInputChange}
-    required
-  />
-  {errors.email && <p className="error">{errors.email}</p>} {/* Message pour email déjà utilisé */}
-  
-  <input
-    type="password"
-    name="password"
-    placeholder="Password"
-    value={formData.password}
-    onChange={handleInputChange}
-    required
-  />
-  {errors.password && <p className="error">{errors.password}</p>}
-  
-  <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
-</form>
+              {isSignUp && (
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                  required
+                />
+              )}
+              {errors.username && <p className="error">{errors.username}</p>}
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              {errors.email && <p className="error">{errors.email}</p>}
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+              />
+              {errors.password && <p className="error">{errors.password}</p>}
+
+              <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
+            </form>
 
             <p>
               {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}

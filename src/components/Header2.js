@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as Logo } from '../assets/Moon Tides.svg';
 import { ReactComponent as LoginLogo } from '../assets/radix-icons_avatar.svg';
+import { ReactComponent as LogoutLogo } from '../assets/logout.svg';
 import BurgerMenu from "./BurgerMenu";
+import { GetCookie, setCookie, RemoveCookie } from "../services/cookies";  // Assurez-vous que GetCookie est bien importé
 
-function Header2() {
+function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -17,6 +19,10 @@ function Header2() {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState("");
+
+  // Vérifie si l'utilisateur est connecté en recherchant le token
+  const token = GetCookie("token");
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
   const toggleBurgerMenu = () => setIsBurgerMenuOpen((prev) => !prev);
@@ -55,27 +61,70 @@ function Header2() {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      alert(isSignUp ? "Sign Up successful!" : "Login successful!");
-      handleOverlayClose();
+      try {
+        const apiUrl = isSignUp 
+          ? 'http://127.0.0.1:8000/api/register' 
+          : 'http://127.0.0.1:8000/api/login';
+  
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+            ...(isSignUp && { username: formData.username } ),
+          }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setSuccess(isSignUp ? 'Signup successful!' : 'Login successful!');
+          setCookie('token', data.token, 1);  // Sauvegarde le token dans les cookies
+        } else {
+          // Gestion des erreurs spécifiques
+          if (data.error === 'Email déjà enregistré') {
+            setErrors({ email: 'This email is already in use.' });
+          } else {
+            setErrors({ error: data.error || 'An error occurred.' });
+          }
+        }
+      } catch (error) {
+        setErrors({ error: 'Network error. Please try again later.' });
+      }
     }
+  };
+
+  // Fonction pour la déconnexion
+  const handleLogout = () => {
+    RemoveCookie("token");  // Supprimer le token à la déconnexion
+    window.location.reload();  // Recharger la page pour mettre à jour l'interface
   };
 
   return (
     <div className="header_container" id="header_container">
       <header className="header_nobg">
-        
         <div className="top_part">
-          <BurgerMenu/>
+          <BurgerMenu />
           <Link to="/" className="logo">
             <Logo width="260" height="66" alt="Moon Tides Logo" />
           </Link>
-          <button className="login_logo" onClick={handleOverlayOpen}>
-            <LoginLogo width="30" height="30" alt="Login" />
-          </button>
+          {/* Affichage conditionnel de LoginLogo ou LogoutLogo */}
+          {token ? (
+            <button className="login_logo" onClick={handleLogout}>
+              <LogoutLogo width="30" height="30" alt="Logout" />
+            </button>
+          ) : (
+            <button className="login_logo" onClick={handleOverlayOpen}>
+              <LoginLogo width="30" height="30" alt="Login" />
+            </button>
+          )}
           <button className="burger_btn" onClick={toggleBurgerMenu}>
             ☰
           </button>
@@ -84,17 +133,25 @@ function Header2() {
         <nav className={`nav ${isBurgerMenuOpen ? "nav_open" : ""}`}>
           <ul className="nav_list">
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/Admin">About</Link>
             </li>
-            <li>
-              <Link to="/Article">Article</Link>
-            </li>
-            <li>
-              <Link to="/Diary">Diary</Link>
-            </li>
+
+            {/* Les liens "Article" et "Diary" n'apparaissent que si l'utilisateur est connecté */}
+            {token && (
+              <>
+                <li>
+                  <Link to="/Article">Article</Link>
+                </li>
+                <li>
+                  <Link to="/Diary">Diary</Link>
+                </li>
+              </>
+            )}
+
             <li>
               <Link to="/LunarCalendar">Lunar Calendar</Link>
             </li>
+
             <li className="dropdown">
               <button className="dropdown_btn" onClick={toggleDropdown}>
                 Practices
@@ -133,6 +190,7 @@ function Header2() {
                 />
               )}
               {errors.username && <p className="error">{errors.username}</p>}
+
               <input
                 type="email"
                 name="email"
@@ -142,6 +200,7 @@ function Header2() {
                 required
               />
               {errors.email && <p className="error">{errors.email}</p>}
+
               <input
                 type="password"
                 name="password"
@@ -151,8 +210,10 @@ function Header2() {
                 required
               />
               {errors.password && <p className="error">{errors.password}</p>}
+
               <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
             </form>
+
             <p>
               {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
               <span className="toggle_form" onClick={toggleForm}>
@@ -166,4 +227,4 @@ function Header2() {
   );
 }
 
-export default Header2;
+export default Header;
